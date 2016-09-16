@@ -1,0 +1,36 @@
+{
+    "build": {
+        "jsSource": "app.js",
+        "tplSource": "app_tpls.html",
+		"rootPath": "",
+		"compiled": false
+    },
+    "thirdpartySources" : [
+        "static/js/thirdparty/jquery.min.js",
+        "static/js/thirdparty/underscore.min.js",
+        "static/js/thirdparty/asdf.js",
+		"static/js/thirdparty/i18next.min.js",
+		"static/js/thirdparty/jsonselect.js",
+		
+		"static/js/thirdparty/canvas.js",
+		
+		"static/js/appIni.js"
+    ],
+    "sources": {
+		"static/js/Collections.js": [],
+	
+        "static/js/views/AppView.js": [],
+		"static/js/views/LoadingView.js": [],
+		"static/js/views/ModalView.js": [],
+		"static/js/views/SyncView.js": [],
+		"static/js/views/ErrorView.js": [],
+		"static/js/views/ObjectView.js": [],
+		"static/js/views/ResumeView.js": [],
+		"static/js/views/ProjectsView.js": [],
+		"static/js/views/AboutView.js": [],
+		
+		"static/js/models/Generic.js": [],
+		
+		"static/js/collections/Generics.js": ["static/js/models/device/Generic.js"]
+    }
+}
