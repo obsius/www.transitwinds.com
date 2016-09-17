@@ -4,7 +4,9 @@ window.app.views.App = Backbone.View.extend({
 		'change select.has-list-enabler': 'handleList',
 		'click .div-toggler': 'toggleDiv',
 		'click [data-href]': 'gotoLink',
-		'click [data-ehref]': 'openLink'
+		'click [data-ehref]': 'openLink',
+		'click [data-album-ref]': 'openImage',
+		'click .expandable': 'openImage'
 	},
 	
 	initialize: function() {
@@ -22,6 +24,13 @@ window.app.views.App = Backbone.View.extend({
 		$('body').prepend(this.$el);
 		
 		this.render();
+	},
+	
+	openImage: function(e) {
+		new window.app.views.ImageViewer({
+			$parent: $(this.$el),
+			$img: $(e.target)
+		});
 	},
 	
 	gotoLink: function(e) {

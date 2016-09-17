@@ -35,9 +35,9 @@
 	// for blocking usage during critical server sync events
 	syncView: {},
 
-    name: 'ngc6822',
+    name: 'NGC6822',
     version: '1.0',
-    date: '08/12/2016',
+    date: '09/12/2016',
 
     compiled: false,
 
@@ -151,8 +151,6 @@
         this.router = new AppRouter();
         Backbone.history.start();
 
-		// sync view singleton
-		this.syncView = new this.views.Sync();
 		
 		// important global stuff
 		this.$domPhantom = $('body').append('<div id="dom-phantom" style="display:none"></div>');
@@ -164,7 +162,7 @@
 
 		// load the default page in the absence of one
 		if (!location.hash) {
-			self.views.App.route('Home');
+			self.views.App.route('About');
 		}
     },
 	
@@ -243,6 +241,11 @@
 };
 
 /* common global namespace stuff */
+
+function renderIcoLink(img, href, txt, cssClass) {
+	cssClass = cssClass || '';
+	return '<div class="ico-link ' + cssClass + '"><div><img src="' + img + '" class="git-ico"></img></div><a href="' + href + '">' + txt + '</a></div>';
+}
 
 function keyValueToArray(kv, keyName, valName) {
 

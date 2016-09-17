@@ -28,6 +28,7 @@
 		"static/js/views/ResumeView.js": [],
 		"static/js/views/ProjectsView.js": [],
 		"static/js/views/AboutView.js": [],
+		"static/js/views/ImageViewerView.js": [],
 		
 		"static/js/models/Generic.js": [],
 		

@@ -115,7 +115,7 @@ this.SpaceEffect = function(canvas) {
 	}
 	
 	this.spawnStar = function(x, y) {
-		return new Particle(new Coord(Math.random() * this.canvas.width, 0), new Vector(Math.random() * .5 * Math.PI + .4 * Math.PI, Math.random() * 5 + 5), 1, new Color(128 + Math.cos(this.colorIndex) * (255 - 174), 128 + Math.cos(this.colorIndex +  2 * Math.PI / 3) * 127, 128 + Math.cos(this.colorIndex + 4 * Math.PI / 3) * 127, 255));
+		return new Particle(new Coord(Math.random() * this.canvas.width, 0), new Vector(Math.random() * .5 * Math.PI + .2 * Math.PI, Math.random() * 5 + 5), 1, new Color(128 + Math.cos(this.colorIndex) * (255 - 174), 128 + Math.cos(this.colorIndex +  2 * Math.PI / 3) * 127, 128 + Math.cos(this.colorIndex + 4 * Math.PI / 3) * 127, 255));
 	}
 	
 	this.star = this.spawnStar();
@@ -167,6 +167,71 @@ this.SpaceEffect = function(canvas) {
 		}
 		
 		//drawPixel(canvasData, this.star.coords, this.star.size, this.star.color);
+		
+		this.colorIndex += this.COLOR_CHANGE_RATE;
+		
+		return true;
+	}
+}
+
+this.Twinkle = function(canvas) {
+
+	this.NUM_SATS = 100;
+
+	this.COLOR_CHANGE_RATE = .025;
+	
+	this.canvas = canvas;
+
+	this.particles = [];
+	this.origin = new Coord(this.canvas.width / 2, this.canvas.height / 2);
+	this.theForce = new PointForce(new Coord(this.origin.x, this.origin.y), .1);
+	this.colorIndex = 0;
+	
+	for (var i = 0; i < this.NUM_SATS; ++i) {
+		this.particles[i] = new Particle(new Coord(Math.random() * this.canvas.width, Math.random() * this.canvas.height), new Vector(0, Math.random() * 10), 1, new Color(255, 255, 255, 255));
+	}
+	
+	this.wrap = function(point) {
+		point.run();
+		point.coords.x = point.coords.x.mod(this.canvas.width);
+		point.coords.y = point.coords.y.mod(this.canvas.height);
+	}
+	
+	this.render = function(ctx) {
+	
+		//Lets blend the particle with the BG
+		ctx.globalCompositeOperation = "lighter";
+		//var canvasData = ctx.getImageData(0, 0, this.canvas.width, this.canvas.height)
+
+		for (var i in this.particles) {
+			var particle = this.particles[i];
+			this.wrap(particle);
+		//	particle.applyPointForce(this.theForce);
+		//	particle.color.a -= 10;
+			
+			if (this.particles[i].color.a <= 0) {
+				//this.particles[i] = this.spawn(this.star.coords.x, this.star.coords.y);
+			} else {
+				//console.log(this.particles);
+				
+				ctx.beginPath();
+				//ctx.globalAlpha = particle.color.a;
+				//Time for some colors
+
+				//ctx.fillStyle = 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',' + (particle.color.a / 255) + ')';
+				ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+				ctx.arc(particle.coords.x, particle.coords.y, 1, Math.PI*2, false);
+				ctx.fill();
+			
+			ctx.closePath();
+				
+				
+			//	drawPixel(canvasData, particle.coords, particle.size, particle.color, true);
+			}
+		}
+		
+		
+		//ctx.putImageData(canvasData, 0, 0);
 		
 		this.colorIndex += this.COLOR_CHANGE_RATE;
 		
@@ -227,7 +292,7 @@ this.GraphicsEngine.prototype = {
 				this.removeEffect(this.effects[i]);
 			}
 		}
-		this.bufferContext.putImageData(this.getCanvasData(this.bufferContext), 0, 0);
+	//	this.bufferContext.putImageData(this.getCanvasData(this.bufferContext), 0, 0);
 		this.setCanvasData(this.bufferCanvas);
 		
 		setTimeout(function () { me._render() }, me.RENDER_SLEEP_TIME);
