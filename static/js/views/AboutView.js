@@ -18,8 +18,6 @@ window.app.views.About = Backbone.View.extend({
 		this.$canvas = this.$('#about-canvas');
 		this.canvas = this.$('#about-canvas')[0];
 
-
-		
 		this.$parent.append(this.$el);
 	},
 	
@@ -32,13 +30,9 @@ window.app.views.About = Backbone.View.extend({
 			this.graphics = null;
 		}
 		
-		//var img = new Image();
-		//img.src = './static/imgs/bg_reg.jpg';
-		
 		this.graphics = new Graphics.GraphicsEngine(this.canvas);
 		this.graphics.addEffect(new Graphics.SpaceEffect(this.canvas));
 		this.graphics.addEffect(new Graphics.Twinkle(this.canvas));
-		//this.graphics.addEffect(new Graphics.WaveEffect(this.canvas, {r: 80, g: 80, b: 80}));
 		this.graphics.run();
 	}
 });

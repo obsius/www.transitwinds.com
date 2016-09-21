@@ -1,1 +1,1 @@
-﻿//window.app.initializationComplete();
+﻿window.app.initializationComplete();

@@ -21,6 +21,7 @@ window.app.views.Resume = Backbone.View.extend({
 	render: function() {
 		
 		var data = {
+			"bio": "I've always had a natural curiosity and affinity for construction. Whether it was playing with Lego's, building a tree house, or even a trebuchet in my friends backyard, I often found myself tinkering around and building things. As a kid, this presented a few challenges since I really don't have much money. However, when my attention turned towards computing with the discovery of games like Super Mario World, Doom, Duke Nukem, and Quake, I found myself immersed in a whole new exciting and captivating virtual world. Over time, the same curiosity that had driven my pursuits in the physical realm, now crept into this virtual one. I found myself asking the same questions, and that eventually led to a pursuit in computer programming. It provided a platform on which I could build, but without the burden of having to buy materials or expensive equipment. Since a twenty line program cost the same as a 20k line program, I no longer had to worry about my wallet, and if I messed up, there were no materials to repurchase. The only thing I could lose was time, and even then I still gained experience from the failure.<br/><br/>Today, I still hold the same passion for programming that I did as a child. Except now I'm able to make a living out of it, and I've been fortunate to have made my passion into my profession. I'm currently living in Santa Monica, CA, but I'm originally from Rochester, NY. I moved out here in 2016 when I was offered a relocation package from my employer. I carefully considered this big life changing transition beforehand, and ultimately decided that I couldn't say no. I had nothing to lose, and a whole new exciting adventure ahead of me. I've thoroughly enjoyed my time out here, but from time to time I find myself missing a few things from back home. Garbage Plates, Genesee Beer, Rohrbach's Scotch Ale, and of course my friends and family too! I even miss the cold weather and clouds a little.",
 			"jobs": [
 				{
 					"company": "Sixgill",
@@ -64,7 +65,7 @@ window.app.views.Resume = Backbone.View.extend({
 					"img": "rit.png"
 				}
 			],
-			"skills": ["HTML", "CSS", "Javascript", "PHP", "C", "C++", "C#", "Ruby", "VB", "Java", ".NET", "Linux", "SQL", "AWS"],
+			"skills": ["Javascript", "HTML", "CSS", "C", "C++", "C#", ".NET", "VB", "Java", "Ruby", "PHP", "Linux", "SQL", "AWS"],
 			"patents": [
 				{
 					"pubNumber": "US20130172006 A1",
@@ -88,6 +89,9 @@ window.app.views.Resume = Backbone.View.extend({
 				},
 			]
 		};
+		
+		// bio
+		this.$('.bio-container').html(data.bio);
 		
 		// jobs
 		var $jobDiv = this.$('.job-container');
@@ -146,7 +150,7 @@ window.app.views.Resume = Backbone.View.extend({
 			
 			$patentDiv.append($(
 				'<h2>' + patent.name + '</h2>' +
-				'<h3><a href="' + patent.link + '">' + patent.pubNumber + '</a></h3>' +
+				'<h3><a href="' + patent.link + '" class="blue">' + patent.pubNumber + '</a></h3>' +
 				((i < data.patents.length - 1) ? '<hr/>' : '')
 			));
 		};

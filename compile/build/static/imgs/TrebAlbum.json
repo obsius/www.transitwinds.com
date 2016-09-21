@@ -1,0 +1,19 @@
+{
+	"images": [
+		{
+			"title": "Christmas Time",
+			"src": "./static/imgs/season_treb.jpg",
+			"caption": "Our trebuchet in the spirit of the season."
+		},
+		{
+			"title": "Fully Winched",
+			"src": "./static/imgs/treb2.jpg",
+			"caption": "Just before launch."
+		},
+		{
+			"title": "Without Hardware",
+			"src": "./static/imgs/treb3.jpg",
+			"caption": "Stripped down frame without any of the springs or cables attached."
+		}
+	]
+}

@@ -4,45 +4,53 @@
 	<h1>This Website!</h1>
 	<hr/>
 	<img src="./static/imgs/ngc6822.jpg" class="expandable" data-caption="NGC6822.  1.6 million light years from earth and visible with just binoculars." style="height:200px;float:right;border:2px solid #111111;border-radius:10px;margin-left:10px;margin-bottom:10px;"></img>
-	I wrote this site to provide a sandbox for any of my side projects, and as a way to showcase my work and resume for recruiters and employment opportunities.  For any question related to potential work opportunites,
-	I can be reached at work@ngc6822.com.<br/><br/>
-	This website is a single page webapp, with all "pages" routed and served internally by the browser via JS.  The hosting server has a collection of files and resources that are loaded by ajax calls, but does not
-	serve any HTML (except for the index page) or run any server-side scripts.  This site
-	is hosted on a Rasberry Pi running Rasbian, and is served up from a custom Go REST API.  The static content is hosted somewhere "up above" for faster content delivery.  The site is written primariy in JS with the use
-	of libraries like backbone.js, underscore.js, and JQuery.<br/><br/>
-	The site is named after Barnard's Galaxy.  It's known by the New General Catalogue as NGC6822.  It is minor satellite Galaxy located 1.6 million lightyears from earth that was discovered in 1884 by E. E. Barnard.  It is the 20th closest known galaxy to Earth.
+	I wrote this site to provide a sandbox for any of my side projects, and as a way to showcase my work and resume for recruiters and employment opportunities. For any question related to potential work opportunities, I can be reached at <a href="mailto:work@ngc6822.com" class="blue">work@ngc6822.com</a>.
+	<br/><br/>
+	This website is a single page web app, with all "pages" routed and served internally by the browser via JS. The hosting server has a collection of files and resources that are loaded by ajax calls, but does not serve any HTML (except for the index page) or run any server-side scripts. This site is hosted on a Raspberry Pi running Raspbian, and is served up by nginx. The static content is hosted somewhere "up above" for faster content delivery. The site is written primarily in JS with the use of libraries like backbone.js, underscore.js, and JQuery. Although there's certainly influence from many well known web styles, I've designed the entirety of this site free from any styling sheet or layout managers (bootstrap, jquery-ui, etc).
+	<br/><br/>
+	The site is named after Barnard's Galaxy. It's known by the New General Catalogue as NGC6822. It is minor satellite Galaxy located 1.6 million light years from earth that was discovered in 1884 by E. E. Barnard. It is the 20th closest known galaxy to Earth. All the good domain names were taken ;)
 	<hr style="width:100%"/>
 	{{ renderIcoLink('./static/imgs/github.png', 'https://github.com/obsius/ngc6822', 'View Code', 'right') }}
-
 </div>
 
 <div class="float">
 	<h1>Heatmap</h1>
 	<hr/>
 	<img src="./static/imgs/heat-std-small.jpg" data-album-ref="./static/imgs/HeatmapAlbum.json" style="width:400px;float:left;margin-right:10px;margin-bottom: 10px;border-radius:10px;background-color:#DEDEDE"></img>
-	I wrote both the front and back-end of this sytem.  From rows in the DB, to pixels on the map: I architected the storage of data,
-	the queries to aggregate points, the algorithms to render tiles, and designed / wrote the webapp UI.
-	The heatmap supports multiple render modes (sectors, smoooth, color partitions), and different color schemes.  If cab render by time, be time-agnostic, or even playback frames to show movement and migration over time.<br/><br/>
-	The server side component is written in C#, and is hosted on an IIS server.  It supports requests via a RESTful interace with JSON messaging.
-	The server makes queries to a MySQL DB, and supports high volume rendering by partitioning data geographically and aggregating data points
-	depending on zoom level.  The IIS server generates tile images which are written out to an FTP server, and returns a URL to the requester after completion.  A JSON object is also returned with map info and stats
-	for the data set.<br/><br/>
-	A JS front-end can be embeded in sites and webapps as a map overlay.  It provides a GUI to adjust settings, display a legend for relative and raw device count, and buttons to toggle between modes.  It also also provides a tool
-	for selecting geographic regions and displays the number of objects within.
+	I wrote both the front and back end of this system. From columns in the DB, to pixels on the map: I architected the storage of data, the queries to aggregate points, the algorithms to render tiles, and designed / wrote the web app UI. The heat map supports multiple render modes (sectors, smooth, color partitions), and different color schemes. If can render by time, be time-agnostic, or even playback frames to show movement and migration over time.
+	<br/><br/>
+	The server side component is written in C#, and is hosted on an IIS server. It supports requests via a RESTful interface with JSON messaging. The server makes queries to a MySQL DB, and supports high volume rendering by partitioning data geographically and aggregating data points depending on zoom level. The IIS server generates tile images which are written out to an FTP server, and returns a URL to the requester after completion. A JSON object is also returned with map info and stats for the data set.
+	<br/><br/>
+	A JS front-end can be embedded in sites and web apps as a map overlay. It provides a GUI to adjust settings, display a legend for relative and raw device count, and buttons to toggle between modes. It also also provides a tool for selecting geographic regions and displays the number of objects within.
 	<hr style="width:100%"/>
 	{{ renderIcoLink('./static/imgs/github.png', 'https://github.com/obsius/heatmap', 'View Code', 'right') }}
-
 </div>
 
 <div class="float">
 	<h1>Guitar Tuner</h1>
 	<hr/>
-	An interactive virtual guitar written in JS that uses pre-recorded notes to playback plaintext tabs and visualize note placements.  It has multiple modes that show the position of scale notes on the fretboard,
-	scale intervals, and can be set up for different tunings.
-	All notes were recorded by me, on a 1968 CIJ Fender Stratocaster Reissue, using 8 guage strings, and Texas Special pickups.  The source signal was upped by a solid state preamp and recorded in a DAC; no amp virtualization was used.
+	An interactive virtual guitar written in JS that uses pre-recorded notes to playback plaintext tabs and visualize note placements.  It has multiple modes that show the position of scale notes on the fretboard, scale intervals, and can be set up for different tunings.  All notes were recorded by me, on a 1968 CIJ Fender Stratocaster Reissue, using 8 guage strings, and Texas Special pickups.  The source signal was upped by a solid state preamp and recorded in a DAC; no amp virtualization was used.
 	<hr style="width:100%"/>
 	{{ renderIcoLink('./static/imgs/github.png', 'https://github.com/obsius/jsTuner', 'View Code', 'right pad-left') }}
 	{{ renderIcoLink('./static/imgs/www.png', 'http://tuner.ngc6822.com', 'Go', 'blue right') }}
+</div>
+
+<div class="float">
+	<h1>Trebuchet (not code)</h1>
+	<hr/>
+	<img src="./static/imgs/season_treb.jpg" data-album-ref="./static/imgs/TrebAlbum.json" style="height:200px;float:right;border:2px solid #111111;border-radius:10px;margin-left:10px;margin-bottom:10px;"></img>
+	A friend and myself built a functioning spring trebuchet that we used to launch rocks, apples, pumpkins, cats (j/k), and whatever else we could fit in the sling.  After we demo'd it to our physics class, we got it back just in time to decorate for the Christmas Season.  You can see it wrapped in Chrismtas lights sitting in-front of my friend's Mom's house.  She was thrilled!
+	<pre>
+Energy Released (theortetical max, lost engergy not accounted for): 4847.05255 J
+Estimated Max Distance: ~274.32 meters (900 feet)
+Energy to Throw (45 degree angle, *no air resistance):
+	1 kg 274.32 m: 1345.5396 J
+	2 kg 274.32 m: 2691.0792 J
+	3 kg 274.32 m: 4036.6188 J
+	4 kg 274.32 m: 5382.1584 J
+	</pre>
+	<hr/>
+	{{ renderIcoLink('./static/imgs/calc.png', './static/imgs/trebuchet_stats.txt', 'View Calculations', 'orange right') }}
 </div>
 
 

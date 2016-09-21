@@ -115,8 +115,7 @@ system('xcopy ' + base_dir + '\static\css ' + build_dir + '\static\css\* /e')
 system('xcopy ' + base_dir + '\static\fonts ' + build_dir + '\static\fonts\* /e')
 system('xcopy ' + base_dir + '\static\imgs ' + build_dir + '\static\imgs\* /e')
 system('xcopy ' + base_dir + '\static\themes ' + build_dir + '\static\themes\* /e')
-system('xcopy ' + base_dir + '\static\js\AppCodes.json ' + build_dir + '\static\js\*')
-system('xcopy ' + base_dir + '\static\js\Timezones.json ' + build_dir + '\static\js\*')
+system('xcopy ' + base_dir + '\static\js\AppData.json ' + build_dir + '\static\js\*')
 
 # copy the new app data and index over
 data['build']['compiled'] = true
@@ -129,7 +128,7 @@ Dir.mkdir(build_dir + '\static\tpls')
 
 # run the minimizers
 system('java -jar compiler.jar --jscomp_off=internetExplorerChecks --warning_level=QUIET --js ' + all_sources.join(' ') + ' --js_output_file ' + build_dir + '\static\js\\' + js_filename)
-system('java -jar htmlcompressor.jar ' + temp_tpl_filename + ' -o ' + build_dir + '\static\tpls\\' + tpl_filename)
+system('java -jar htmlcompressor.jar -p no-change.txt ' + temp_tpl_filename + ' -o ' + build_dir + '\static\tpls\\' + tpl_filename)
 
 # cleanup
 spawn('del ' + temp_tpl_filename)

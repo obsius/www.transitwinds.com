@@ -37,7 +37,7 @@
 
     name: 'NGC6822',
     version: '1.0',
-    date: '09/12/2016',
+    date: '09/21/2016',
 
     compiled: false,
 
@@ -94,7 +94,7 @@
 					self.router.navigate('#', {trigger: false, replace: true});
 					self.router.navigate(page, {trigger: true, replace: true});
 				} else {
-					self.views.App.route('Devices');
+					self.views.App.route('About');
 				}
 				
 				callback();
@@ -119,7 +119,7 @@
 				},
 				success: function (data) {
 					$('body').append(data);
-					self.initializationComplete();
+					//self.initializationComplete();
 				}
 			});
 		} else {
@@ -318,7 +318,6 @@ function concatURLs() {
 
     return retURL;
 }
-
 
 // data ports
 function DataPort() {

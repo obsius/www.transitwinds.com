@@ -269,6 +269,8 @@ this.GraphicsEngine = function(canvas, image) {
 	this.events = new EventManager();
 	this.effects = new Array();
 	
+	this.lastRender = 0;
+	
 	this.state = this.STATE_STOPPED;
 }
 
@@ -277,6 +279,12 @@ this.GraphicsEngine.prototype = {
 	_render: function() {
 	
 		var me = this;
+
+		var diff = performance.now() - this.lastRender;
+
+		if (diff  <= 40) { setTimeout(function() { me._render(); }, diff); return; }
+		this.lastRender = performance.now();
+		
 	
 		if (this.state != this.STATE_RUNNING) { return; }
 		
@@ -285,17 +293,20 @@ this.GraphicsEngine.prototype = {
 		this.bufferCanvas.width = this.canvas.width;
 		this.bufferCanvas.height = this.canvas.height;
 		
-		this.bufferContext.putImageData(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height), 0, 0);
+		//this.bufferContext.putImageData(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height), 0, 0);
+		//this.bufferContext.drawImage(this.canvas, 0, 0);
 		
 		for (var i = 0; i < this.effects.length; ++i) {
-			if (!this.effects[i].render(this.bufferContext)) {
+			if (!this.effects[i].render(this.context)) {
 				this.removeEffect(this.effects[i]);
 			}
 		}
 	//	this.bufferContext.putImageData(this.getCanvasData(this.bufferContext), 0, 0);
-		this.setCanvasData(this.bufferCanvas);
+	//	this.setCanvasData(this.bufferCanvas);
 		
-		setTimeout(function () { me._render() }, me.RENDER_SLEEP_TIME);
+		//setTimeout(function () { me._render() }, me.RENDER_SLEEP_TIME);
+		
+		window.requestAnimationFrame(function () { me._render() });
 	},
 
 	getCanvasData: function(context) {

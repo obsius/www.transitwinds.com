@@ -8,7 +8,7 @@
     "thirdpartySources" : [
         "static/js/thirdparty/jquery.min.js",
         "static/js/thirdparty/underscore.min.js",
-        "static/js/thirdparty/asdf.js",
+        "static/js/thirdparty/backbone.min.js",
 		"static/js/thirdparty/i18next.min.js",
 		"static/js/thirdparty/jsonselect.js",
 		
@@ -20,11 +20,7 @@
 		"static/js/Collections.js": [],
 	
         "static/js/views/AppView.js": [],
-		"static/js/views/LoadingView.js": [],
-		"static/js/views/ModalView.js": [],
-		"static/js/views/SyncView.js": [],
 		"static/js/views/ErrorView.js": [],
-		"static/js/views/ObjectView.js": [],
 		"static/js/views/ResumeView.js": [],
 		"static/js/views/ProjectsView.js": [],
 		"static/js/views/AboutView.js": [],
