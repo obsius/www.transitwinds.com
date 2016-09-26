@@ -135,7 +135,7 @@ this.SpaceEffect = function(canvas) {
 		}
 	
 		//Lets blend the particle with the BG
-		ctx.globalCompositeOperation = "lighter";
+		ctx.globalCompositeOperation = 'lighter';
 		
 		this.star.run();
 
@@ -148,21 +148,24 @@ this.SpaceEffect = function(canvas) {
 				this.particles[i] = this.spawn(this.star.coords.x, this.star.coords.y);
 			} else {
 				//drawPixel(canvasData, this.particles[i].coords, this.particles[i].size, this.particles[i].color);
-				ctx.beginPath();
-				//ctx.globalAlpha = particle.color.a;
+				
+				ctx.globalAlpha = (parseInt((particle.color.a / 255) * 10) / 10);
 				//Time for some colors
 				var gradient = ctx.createRadialGradient(particle.coords.x, particle.coords.y, 0, particle.coords.x, particle.coords.y, 10);
-				
-				gradient.addColorStop(0, 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',' + (particle.color.a / 255) + ')');
+
+				//gradient.addColorStop(0, 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',' + (parseInt((particle.color.a / 255) * 10) / 10) + ')');
+				gradient.addColorStop(0, 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',1');
 				gradient.addColorStop(1, 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',0)');
 				
+				//delete ctx['fillStyle'];
 				ctx.fillStyle = gradient;
-				//ctx.fillStyle = 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',' + (particle.color.a / 255) + ')';
+			//	ctx.fillStyle = 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',' + (particle.color.a / 255) + ')';
 				//ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+				ctx.beginPath();
 				ctx.arc(particle.coords.x, particle.coords.y, 10, Math.PI*2, false);
 				ctx.fill();
-			
-			ctx.closePath();
+				
+
 			}
 		}
 		
@@ -188,7 +191,7 @@ this.Twinkle = function(canvas) {
 	this.colorIndex = 0;
 	
 	for (var i = 0; i < this.NUM_SATS; ++i) {
-		this.particles[i] = new Particle(new Coord(Math.random() * this.canvas.width, Math.random() * this.canvas.height), new Vector(0, Math.random() * 10), 1, new Color(255, 255, 255, 255));
+		this.particles[i] = new Particle(new Coord(Math.random() * this.canvas.width, Math.random() * this.canvas.height), new Vector(0, Math.random() * 4), Math.random() * 2, new Color(255, 255, 255, 255));
 	}
 	
 	this.wrap = function(point) {
@@ -213,14 +216,14 @@ this.Twinkle = function(canvas) {
 				//this.particles[i] = this.spawn(this.star.coords.x, this.star.coords.y);
 			} else {
 				//console.log(this.particles);
-				
+				ctx.globalAlpha = 1;
 				ctx.beginPath();
 				//ctx.globalAlpha = particle.color.a;
 				//Time for some colors
 
 				//ctx.fillStyle = 'rgba(' + parseInt(particle.color.r) + ',' + parseInt(particle.color.g) + ',' + parseInt(particle.color.b) + ',' + (particle.color.a / 255) + ')';
-				ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-				ctx.arc(particle.coords.x, particle.coords.y, 1, Math.PI*2, false);
+				ctx.fillStyle = 'rgba(255, 255, 255, .7)';
+				ctx.arc(particle.coords.x, particle.coords.y, particle.size, Math.PI*2, false);
 				ctx.fill();
 			
 			ctx.closePath();
@@ -243,7 +246,7 @@ this.GraphicsEngine = function(canvas, image) {
 
 	var me = this;
 	
-	this.RENDER_SLEEP_TIME = 25;
+	this.RENDER_SLEEP_TIME = 30;
 	
 	this.STATE_RUNNING = 1;
 	this.STATE_STOPPED = 0;
@@ -253,14 +256,6 @@ this.GraphicsEngine = function(canvas, image) {
 	if (!!image) { this.image = (new Image()).src = image; }
 	
 	this.context = this.canvas.getContext("2d");
-	
-	this.bufferCanvas = document.createElement('canvas');
-	this.bufferCanvas.style.width = this.canvas.style.width;
-	this.bufferCanvas.style.height = this.canvas.style.height;
-	this.bufferCanvas.width = this.canvas.width;
-	this.bufferCanvas.height = this.canvas.height;
-	
-	this.bufferContext = this.bufferCanvas.getContext("2d");
 	
 	if (!!this.image) {
 		this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height);
@@ -282,31 +277,21 @@ this.GraphicsEngine.prototype = {
 
 		var diff = performance.now() - this.lastRender;
 
-		if (diff  <= 40) { setTimeout(function() { me._render(); }, diff); return; }
+		if (diff  <= this.RENDER_SLEEP_TIME) { setTimeout(function() { me._render(); }, diff); return; }
 		this.lastRender = performance.now();
-		
 	
 		if (this.state != this.STATE_RUNNING) { return; }
-		
+
 		this.clearCanvas();
-		
-		this.bufferCanvas.width = this.canvas.width;
-		this.bufferCanvas.height = this.canvas.height;
-		
-		//this.bufferContext.putImageData(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height), 0, 0);
-		//this.bufferContext.drawImage(this.canvas, 0, 0);
 		
 		for (var i = 0; i < this.effects.length; ++i) {
 			if (!this.effects[i].render(this.context)) {
 				this.removeEffect(this.effects[i]);
 			}
 		}
-	//	this.bufferContext.putImageData(this.getCanvasData(this.bufferContext), 0, 0);
-	//	this.setCanvasData(this.bufferCanvas);
-		
-		//setTimeout(function () { me._render() }, me.RENDER_SLEEP_TIME);
-		
-		window.requestAnimationFrame(function () { me._render() });
+
+		setTimeout(function () { me._render() }, me.RENDER_SLEEP_TIME);
+	//	window.requestAnimationFrame(function () { me._render(); });
 	},
 
 	getCanvasData: function(context) {
@@ -314,7 +299,6 @@ this.GraphicsEngine.prototype = {
 	},
 	
 	setCanvasData: function(canvasData) {
-		//this.context.putImageData(canvasData, 0, 0);
 		this.context.drawImage(canvasData, 0, 0);
 	},
 

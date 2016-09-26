@@ -5,8 +5,10 @@ html, body {
 	
 	background-color: #000000;
 	background-image: url(../imgs/bg_reg.jpg);
-    background-size: auto 100%;
-	background-position: center top;
+	background-repeat: no-repeat;
+  /*  background-size: 100% auto;  */
+	background-position: center bottom;
+	background-attachment: fixed;
 
 	min-width: 600px;
 	height: 100%;
