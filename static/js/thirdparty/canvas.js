@@ -290,7 +290,7 @@ this.GraphicsEngine.prototype = {
 			}
 		}
 
-		setTimeout(function () { me._render() }, me.RENDER_SLEEP_TIME);
+		setTimeout(function () { me._render() }, Math.floor(me.RENDER_SLEEP_TIME / 2));
 	//	window.requestAnimationFrame(function () { me._render(); });
 	},
 

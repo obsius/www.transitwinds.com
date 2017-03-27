@@ -34,5 +34,19 @@ window.app.views.About = Backbone.View.extend({
 		this.graphics.addEffect(new Graphics.SpaceEffect(this.canvas));
 		this.graphics.addEffect(new Graphics.Twinkle(this.canvas));
 		this.graphics.run();
+	},
+	
+	hide: function() {
+		if (this.graphics) {
+			this.graphics.stop();
+		}
+		Backbone.View.prototype.hide.call(this);
+	},
+	
+	show: function() {
+		if (this.graphics) {
+			this.graphics.run();
+		}
+		Backbone.View.prototype.show.call(this);
 	}
 });
