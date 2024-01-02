@@ -1,0 +1,16 @@
+{
+	"name": "obsius.net",
+	"version": "1.0.0",
+	"description": "Personal website of Jeff Seaman.",
+	"homepage": "https://www.obsius.net",
+	"author": "Jeff Seaman <mr.jeffrey.seaman@gmail.com> (https://www.obsius.net)",
+	"main": "index.js",
+	"scripts": {
+		"compile": "node scripts/compile.js"
+	},
+	"devDependencies": {
+		"fs-extra": "^11.2.0",
+		"html-minifier": "^4.0.0",
+		"uglify-js": "^3.17.4"
+	}
+}

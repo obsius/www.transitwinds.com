@@ -1,0 +1,14 @@
+{
+	"images": [
+		{
+			"title": "Blasting",
+			"src": "./assets/op3d/blasting.gif",
+			"caption": "Replay of a blast simulation."
+		},
+		{
+			"title": "Diglines",
+			"src": "./assets/op3d/diglines.gif",
+			"caption": "User editing diglines (polygons)."
+		}
+	]
+}

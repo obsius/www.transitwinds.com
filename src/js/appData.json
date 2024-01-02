@@ -1,0 +1,23 @@
+{
+	"build": {
+		"jsSource": "app.js",
+		"tplSource": "app_tpls.html",
+		"rootPath": "",
+		"compiled": false
+	},
+	"thirdpartySources" : [
+		"src/js/thirdparty/jquery.min.js",
+		"src/js/thirdparty/underscore.min.js",
+		"src/js/thirdparty/backbone.js",
+		"src/js/thirdparty/canvas.js",
+		"src/js/appIni.js"
+	],
+	"sources": {
+		"src/js/views/AppView.js": [],
+		"src/js/views/ErrorView.js": [],
+		"src/js/views/ResumeView.js": [],
+		"src/js/views/ProjectsView.js": [],
+		"src/js/views/AboutView.js": [],
+		"src/js/views/ImageViewerView.js": []
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"images": [
+		{
+			"title": "Portal",
+			"src": "./assets/op3d/admin-portal.png",
+			"caption": "Admin portal."
+		},
+		{
+			"title": "Table",
+			"src": "./assets/op3d/admin-table.png",
+			"caption": "Admin portal data table."
+		},
+		{
+			"title": "Simulations",
+			"src": "./assets/op3d/admin-simulations.png",
+			"caption": "Simulation queue."
+		},
+		{
+			"title": "Physics",
+			"src": "./assets/op3d/admin-physics.png",
+			"caption": "Physics tuning parameter modal."
+		}
+	]
+}

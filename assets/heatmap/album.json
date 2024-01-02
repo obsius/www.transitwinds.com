@@ -1,0 +1,19 @@
+{
+	"images": [
+		{
+			"title": "Standard View",
+			"src": "./assets/heatmap/smooth.jpg",
+			"caption": "A heatmap showing the relative scale, and the absolute geophraphically partitioned device count."
+		},
+		{
+			"title": "Time Range View",
+			"src": "./assets/heatmap/timeslider.jpg",
+			"caption": "The time slider, with an alternative color scheme."
+		},
+		{
+			"title": "Block Mode",
+			"src": "./assets/heatmap/blocks.jpg",
+			"caption": "The block mode heatmap view, with small discrete sectors, showing an absolute scale."
+		}
+	]
+}

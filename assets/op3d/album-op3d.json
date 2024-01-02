@@ -1,0 +1,39 @@
+{
+	"images": [
+		{
+			"title": "Splash",
+			"src": "./assets/op3d/splash.png",
+			"caption": "Initial page when OREPro 3D is first opened."
+		},
+		{
+			"title": "Topos",
+			"src": "./assets/op3d/topos.png",
+			"caption": "Topography layers turned on to show the pre (wireframe) and post (colored) topos."
+		},
+		{
+			"title": "Blockmodel",
+			"src": "./assets/op3d/blockmodel.png",
+			"caption": "Blockmodel with each voxel colored by classification."
+		},
+		{
+			"title": "Holes",
+			"src": "./assets/op3d/holes.png",
+			"caption": "Hole visualization in 2D isometric mode."
+		},
+		{
+			"title": "Decision Tree",
+			"src": "./assets/op3d/tree.png",
+			"caption": "Decision tree builder for destination classifications."
+		},
+		{
+			"title": "Attributes",
+			"src": "./assets/op3d/attributes.png",
+			"caption": "Model attributes with histogram."
+		},
+		{
+			"title": "Settings",
+			"src": "./assets/op3d/settings.png",
+			"caption": "Settings page for modifying renderer behavior."
+		}
+	]
+}

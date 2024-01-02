@@ -1,0 +1,108 @@
+<script type="text/x-template" id="projects">
+
+<div class="float">
+	<h1>This Website!</h1>
+	<hr/>
+	<img src="./assets/obsius.net.png" class="expandable" data-caption="This website!" style="height:200px;float:right;border:2px solid #111111;border-radius:10px;margin-left:10px;margin-bottom:10px;background-color:#111111"></img>
+	I wrote this site to provide a sandbox for side projects and as showcase for my work and resume. I can be reached at <a href="mailto:info@obsius.net" class="blue">info@obsius.net</a>.
+	<br/><br/>
+	This website is a single-page web app, with all "pages" routed and served internally by the browser via JS. The hosting server has a collection of files and resources that are loaded by ajax calls, but does not serve any HTML (except for the initial index page) or run any server-side scripts. This site is hosted on a DigitalOcean Ubuntu VM and served / routed by NGINX. Some static content is hosted on DigitalOcean's Spaces (analogous to AWS S3) for faster content delivery. The site's architecture is old school, being written primarily in JS with the use of libraries like Backbone.js, Underscore.js, and jQuery, although most of my current (2024) web work is done in React and bundled via webpack or rollup.
+	<br/><br/>
+	Take a look below or visit my <a href="https://www.linkedin.com/in/jeffrey-seaman/" class="blue">Linkedin</a> for more about my work and career.
+	<hr style="width:100%"/>
+	{{ renderIcoLink('./assets/logos/github.png', 'https://github.com/obsius/obsius.net', 'View Code', 'right') }}
+</div>
+
+<div class="float">
+	<h1>OREPro 3D</h1>
+	<hr/>
+	<div style="overflow: hidden">
+		<img src="./assets/op3d/blasting.gif" data-album-ref="./assets/op3d/album-animation.json" style="width:500px;float:right;border-radius:10px;margin-left:10px;margin-bottom:10px;"></img>
+		Development on OREPro 3D™ began in early 2018 after I met with the founder of OreControl Blasting Consultants (OBC) to discuss his vision. The idea was simple - create desktop software to help surface mines around the world with their daily grade control. During blasting rock moves (and more importantly minerals like gold and silver), knowing this movement helps geologists offer better digging directions to their mining fleets. OREPro 3D not only provides estimated and simulated movement, but also optimizes these directions by creating ideal digging polygons (polygons that enclose areas of high grade or other classification). It stayed true to form throughout the development process and our hard work culminated with the sale of OBC to Orica in 2021.
+		<br/><br/>
+		OREPro 3D is a webapp wrapped inside of Electron. It is written in React and makes heavy use of THREE.js as a 3D renderer for visualizing each blast (holes, topographies, movement, and ore polygons). Users follow a simple workflow of importing blast data, making small edits / running cleanup operations, and then simulate blast movement, generate dig polygons, and output general or specific data with custom export scripts. It communicates with a server for authentication, in-app updating, cloud processing, and help / bug ticket submissions.
+	</div>
+	<div style="overflow: hidden">
+		<img src="./assets/op3d/splash.png" data-album-ref="./assets/op3d/album-op3d.json" style="width:400px;float:left;margin-right:10px;margin-bottom: 10px;border-radius:10px;background-color:#DEDEDE"></img>
+		During development, I:
+		<ul>
+			<li>Designed (architecture / UI) and programmed OREPro 3D</li>
+			<li>Built OREPro Edu (a companion app to train users)</li>
+			<li>Built the read-only web and mobile interfaces of OP3D</li>
+			<li>Built and setup the back-end servers and databases</li>
+			<li>Built the administrative portal (onboarding, usage tracking, customer assistance)</li>
+			<li>Built a system for language translation packs (with auto translation and tracked corrections)</li>
+			<li>Built a job task system for batch processing and periodic system alerts</li>
+			<li>Managed servers (scripting, SSL certs, docker, hardening, and monitoring)</li>
+			<li>Handled help / bug tickets and wrote custom scripts for customers</li>
+		</ul>
+	</div>
+	<div style="overflow: hidden">
+		<img src="./assets/op3d/edu.png" class="expandable" data-caption="OREPro Edu." style="width:400px;float:right;border-radius:10px;margin-left:10px;margin-bottom:10px;"></img>
+		The two most algorithmically intensive tasks during development of OP3D were programming a set of rules to move centroids from their pre-blast to post-blast positions, and building an optimizer to solve a 2D grid by clustering sectors of similar classifications together to make digable polygons. Both are core features of the software.
+		<br/><br/>
+		For non-IP related challenges, I created public NPM repos:
+		<ul>
+			<li><a href="https://www.npmjs.com/package/typed-binary-json" class="blue">Typed Binary JSON</a>&nbsp;- compact serializing of binary repeated JSON-compatible data structures</li>
+			<li><a href="https://www.npmjs.com/package/score-heap" class="blue">Score Heap</a>&nbsp;- general-purpose, speed-optimized, sorted queue using typed arrays</li>
+			<li><a href="https://www.npmjs.com/package/electronbar" class="blue">Electronbar</a>&nbsp;- Windows-like top menu bar written in React</li>
+			<li><a href="https://www.npmjs.com/package/color-chooser" class="blue">Color Chooser</a>&nbsp;- lag-free React color picker</li>
+		</ul>
+	</div>
+	<div style="overflow: hidden">
+		<img src="./assets/op3d/admin-portal.png" data-album-ref="./assets/op3d/album-admin.json" style="width:400px;float:left;margin-right:10px;margin-bottom: 10px;border-radius:10px;background-color:#DEDEDE"></img>
+		OREPro 3D is accompanied by a companion e-learning app written in the same style. OREPro Edu provides users with the ability to download and locally store learning material (encrypted on disk) while taking online training courses. Edu has embedded viewers for PDF files, movies, and allows for other content to be extracted and viewed outside of the application.
+		<br/><br/>
+		Today (2024), OREPro 3D is used by hundreds of mines around the world with access provided to over 1,000 users. Tens of thousands of blasts have been processed and multiple case studies published demonstrating the value of OREPro 3D. I had always dreamed of hosting a game server (Half-Life, TFC) when I was younger, but never got many server hits. Now finally, many years later, I can not only say that I hosted an actually used server, but also wrote the program that connects to it.
+		<br/><br/>
+		OREPro 3D in the news:
+		<ul>
+			<li><a href="https://www.teck.com/news/stories/2022/race21%E2%84%A2-impact-innovation-in-blasting-improves-zinc-grade-at-red-dog" class="blue">RACE Impact: Innovation in Blasting Improves Zinc Grade at Red Dog</a></li>
+			<li><a href="https://www.globalminingreview.com/product-news/28102021/orica-releases-3d-blast-movement-technology/" class="blue">Orica releases 3D blast movement technology</a></li>
+			<li><a href="https://im-mining.com/2023/01/31/orica-looks-to-enhance-blast-design-value-generation-with-orepro-3d-predict/" class="blue">Orica looks to enhance blast design value generation with OREPro 3D Predict</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="float">
+	<h1>Heatmap</h1>
+	<hr/>
+	<img src="./assets/heatmap/smooth.jpg" data-album-ref="./assets/heatmap/album.json" style="width:400px;float:left;margin-right:10px;margin-bottom: 10px;border-radius:10px;background-color:#DEDEDE"></img>
+	I wrote both the front and back end of this system. From columns in the DB to pixels on the map, I architected the storage of data, the queries to aggregate points, the algorithms to render tiles, and designed / wrote the web app UI. The heatmap supports multiple render modes (sectors, smooth, color partitions), and different color schemes. If can render in time intervals, aggregate, and even playback frames to show movement over time.
+	<br/><br/>
+	The server-side portion was written in C#, and was hosted on an IIS server. It supported requests via a RESTful interface with JSON payloads. Data was stored in MySQL (AWS managed with multiple read replicas), and supported high volume rendering by partitioning data geographically and aggregating data points dependent on zoom. The IIS server generated tile images which were written out to AWS S3, and referenced via URL to the requester after completion. A stats JSON object was also returned with map info and stats for the request.
+	<br/><br/>
+	A JS front-end library was provided to allow embedding into sites and web apps as a Google Maps overlay. It provided a GUI to adjust settings, display a legend for relative and raw density counts, and buttons to toggle between modes. A tool for selecting geographic regions to display the number of objects within was also available.
+	<hr style="width:100%"/>
+	{{ renderIcoLink('./assets/logos/github.png', 'https://github.com/obsius/heatmap', 'View Code', 'right') }}
+</div>
+
+<div class="float">
+	<h1>Guitar Tuner</h1>
+	<hr/>
+	An interactive virtual guitar written in JS that uses pre-recorded notes to playback plaintext tabs and visualize note placements. It has multiple modes that show the position of scale notes on the fretboard, scale intervals, and can be set up for different tunings. All notes were recorded on a 1968 CIJ Fender Stratocaster Reissue using 8 guage strings and Texas Special pickups. The source signal was fed through a solid state preamp and recorded in a DAC; no amp virtualization was used.
+	<hr style="width:100%"/>
+	{{ renderIcoLink('./assets/logos/github.png', 'https://github.com/obsius/js-tuner', 'View Code', 'right pad-left') }}
+	{{ renderIcoLink('./assets/www.png', 'http://tuner.transitwinds.com', 'Go', 'blue right') }}
+</div>
+
+<div class="float">
+	<h1>Trebuchet (not code)</h1>
+	<hr/>
+	<img src="./assets/trebuchet/seasonal.jpg" data-album-ref="./assets/trebuchet/album.json" style="height:200px;float:right;border:2px solid #111111;border-radius:10px;margin-left:10px;margin-bottom:10px;"></img>
+	A friend and myself built a functioning spring trebuchet that we used to launch rocks, apples, pumpkins, cats (j/k), and whatever else we could fit into the sling. After we demo'd it to our physics class, we got it back just in time to decorate for the Christmas Season. You can see it wrapped in Chrismtas lights sitting in front of my friend's Mom's house. She was thrilled!
+	<pre>
+Energy Released (theortetical max, lost engergy not accounted for): 4847.05255 J
+Estimated Max Distance: ~274.32 meters (900 feet)
+Energy to Throw (45 degree angle, *no air resistance):
+	1 kg 274.32 m: 1345.5396 J
+	2 kg 274.32 m: 2691.0792 J
+	3 kg 274.32 m: 4036.6188 J
+	4 kg 274.32 m: 5382.1584 J
+	</pre>
+	<hr/>
+	{{ renderIcoLink('./assets/calc.png', './assets/trebuchet/stats.txt', 'View Calculations', 'orange right') }}
+</div>
+
+
+</script>
