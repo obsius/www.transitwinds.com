@@ -1,8 +1,8 @@
 {
-	"name": "obsius.net",
+	"name": "www.transitwinds.com",
 	"version": "1.0.0",
 	"description": "Personal website of Jeff Seaman.",
-	"homepage": "https://www.obsius.net",
+	"homepage": "https://www.transitwinds.com",
 	"author": "Jeff Seaman <mr.jeffrey.seaman@gmail.com> (https://www.obsius.net)",
 	"main": "index.js",
 	"scripts": {
